@@ -50,7 +50,7 @@ app.get("/scrape", function(req, res){
       console.log(result)
 
     // creating a new article using the result obj buit by scraping
-      db.collection.create(result)
+      db.collectionss.create(result)
         .then(function(dbArticle){
           // console.log
           console.log(dbArticle)
@@ -66,7 +66,7 @@ app.get("/scrape", function(req, res){
 // Route for getting all Articles from the db
 app.get("/api/collection", function(req, res) {
   // Grab every document in the Articles collection
-  db.collection.find({})
+  db.collections.find({})
     .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
       res.json(dbArticle);
@@ -78,7 +78,7 @@ app.get("/api/collection", function(req, res) {
 });
 // route to save the specific article
 app.put("/save/:id", function(req, res){
-  db.collection.findByIdAndUpdate(req.params.id, {$set: {isSaved: true}}, {new: true})
+  db.collections.findByIdAndUpdate(req.params.id, {$set: {isSaved: true}}, {new: true})
     .then(function(savedcollection){
     console.log(savedcollection);
     res.json(savedcollection);
